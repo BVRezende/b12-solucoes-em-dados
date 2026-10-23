@@ -160,76 +160,94 @@ html{scroll-behavior:smooth}
 </div>
 </section>
 
-<section id="cases" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<section id="cases" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 32px">
+<style>
+.cs-abas{display:flex;flex-wrap:wrap;gap:10px}
+.cs-aba{font:inherit;font-size:15px;color:#B4BDB7;background:transparent;border:1px solid #2A332E;border-radius:999px;padding:10px 18px;min-height:44px;cursor:pointer}
+.cs-aba:hover{color:#E9EFEA;background:#121715}
+.cs-aba[aria-selected="true"]{color:#07090A;background:#B6FF3D;border-color:#B6FF3D;font-weight:700}
+.cs-aba:focus-visible,.cs-range:focus-visible+.cs-alca span{outline:3px solid #B6FF3D;outline-offset:3px}
+.cs-comp{--pos:50%;position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid #1F2723;background:#0D1110;user-select:none;box-shadow:0 0 80px rgba(182,255,61,.06)}
+.cs-comp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cs-depois{clip-path:inset(0 0 0 var(--pos))}
+.cs-alca{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#B6FF3D;pointer-events:none}
+.cs-alca span{position:absolute;top:50%;left:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#B6FF3D;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.45)}
+.cs-rot{position:absolute;top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;padding:6px 10px;border-radius:6px;pointer-events:none}
+.cs-rot.a{left:16px;background:rgba(7,9,10,.85);color:#E9EFEA}
+.cs-rot.d{right:16px;background:#B6FF3D;color:#07090A;font-weight:600}
+.cs-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.cs-txt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cs-txt div{border-top:1px solid #1F2723;padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.cs-txt b{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:400;color:#8E9892}
+.cs-txt p{margin:0;color:#B4BDB7;line-height:1.55}
+.cs-txt .res b{color:#B6FF3D}
+.cs-txt .res p{color:#E9EFEA}
+@media (max-width:760px){.cs-txt{grid-template-columns:1fr}.cs-rot{font-size:10px;padding:4px 7px;top:8px}.cs-rot.a{left:8px}.cs-rot.d{right:8px}.cs-x{display:none}.cs-alca span{width:36px;height:36px;margin:-18px 0 0 -18px}}
+</style>
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
 <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #B6FF3D">04 / cases</span>
 <h2 style="margin: 0; font-size: 42px; line-height: 1.1; letter-spacing: -1px">Antes e depois</h2>
-<p style="margin: 0; color: #B4BDB7; font-size: 18px; line-height: 1.55">Projetos demonstrativos com negócios e números fictícios, feitos em Python, mostrando o tipo de resposta que um painel da B12 entrega.</p>
+<p style="margin: 0; color: #B4BDB7; font-size: 18px; line-height: 1.55">Arraste a barra para ver a planilha virar painel. São projetos demonstrativos, com negócios e números fictícios, mostrando o tipo de entrega da B12.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
-<div class="card" style="border: 1px solid #1F2723; border-radius: 14px; overflow: hidden; background: #0D1110; display: flex; flex-direction: column">
-<div style="background: #0A0D0C; border-bottom: 1px solid #1F2723; padding: 24px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 14px; color: #E9EFEA; font-weight: 500">Margem bruta por categoria</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">dados fictícios</span></div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Ferramentas</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 90.0%; background: #B6FF3D; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">40%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Hidráulica</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 78.4%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">35%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Tintas</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 76.9%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">35%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Elétrica</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 76.2%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">34%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Pisos</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 65.6%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">30%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Cimento</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 52.2%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">24%</span></div>
+<div class="cs-abas" role="tablist" aria-label="Escolha um case">
+<button class="cs-aba" role="tab" aria-selected="true" data-case="0">Varejo · 3 lojas</button>
+<button class="cs-aba" role="tab" aria-selected="false" data-case="1">Marcenaria</button>
+<button class="cs-aba" role="tab" aria-selected="false" data-case="2">Loja de bairro</button>
 </div>
+<div class="cs-comp" id="cs-comp">
+<img id="cs-img-antes" src="case-varejo-antes.jpg" alt="Antes: planilha de vendas bagunçada, com erros e abas duplicadas">
+<img id="cs-img-depois" class="cs-depois" src="case-varejo-depois.jpg" alt="Depois: painel de gestão da B12 com faturamento, margem e estoque parado">
+<span class="cs-rot a">ANTES<span class="cs-x"> · planilha</span></span>
+<span class="cs-rot d">DEPOIS<span class="cs-x"> · painel B12</span></span>
+<input class="cs-range" id="cs-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+<div class="cs-alca"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#07090A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg></span></div>
 </div>
-<div style="padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E9892">CASE 01 · VAREJO, 3 LOJAS</span>
-<h3 style="margin: 0; font-size: 21px">Materiais de construção</h3>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Antes:</strong> cada loja fechava o mês numa planilha própria; o consolidado chegava semanas depois.</p>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Depois:</strong> as três lojas num painel só, com faturamento, margem por categoria, curva ABC e estoque parado.</p>
-<p style="margin: 0; padding-top: 12px; border-top: 1px solid #1F2723; color: #B4BDB7; line-height: 1.5; font-size: 14px">Cimento é campeão de volume e lanterna de margem. E o painel encontrou <strong style="color: #B6FF3D">R$ 665 mil</strong> parados em produtos com mais de 120 dias de estoque.</p>
-</div>
-</div>
-<div class="card" style="border: 1px solid #1F2723; border-radius: 14px; overflow: hidden; background: #0D1110; display: flex; flex-direction: column">
-<div style="background: #0A0D0C; border-bottom: 1px solid #1F2723; padding: 24px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 14px; color: #E9EFEA; font-weight: 500">Taxa de fechamento por canal</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">dados fictícios</span></div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Arquiteto</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 88.9%; background: #B6FF3D; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">62%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Indicação</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 73.0%; background: #B6FF3D; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">51%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Showroom</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 59.1%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">41%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Instagram</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 43.0%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">30%</span></div>
-<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 48px; align-items: center; gap: 10px; font-size: 13px"><span style="color: #B4BDB7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Google</span><div style="height: 12px; background: #121715; border-radius: 3px"><div style="height: 12px; width: 34.7%; background: #3C4A42; border-radius: 3px"></div></div><span style="font-family: 'JetBrains Mono', monospace; color: #E9EFEA; text-align: right">24%</span></div>
-</div>
-</div>
-<div style="padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E9892">CASE 02 · MARCENARIA</span>
-<h3 style="margin: 0; font-size: 21px">Móveis planejados</h3>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Antes:</strong> orçamentos no caderno e no WhatsApp, sem saber de onde vinham os clientes que fecham.</p>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Depois:</strong> funil de orçamentos, fechamento por canal, margem por ambiente e pontualidade de cada equipe.</p>
-<p style="margin: 0; padding-top: 12px; border-top: 1px solid #1F2723; color: #B4BDB7; line-height: 1.5; font-size: 14px">Orçamento vindo de arquiteto fecha <strong style="color: #B6FF3D">62%</strong> das vezes; do Google, 24%. Dá pra saber onde investir tempo.</p>
-</div>
-</div>
-<div class="card" style="border: 1px solid #1F2723; border-radius: 14px; overflow: hidden; background: #0D1110; display: flex; flex-direction: column">
-<div style="background: #0A0D0C; border-bottom: 1px solid #1F2723; padding: 24px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 14px; color: #E9EFEA; font-weight: 500">Vendas por dia e horário</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">dados fictícios</span></div>
-<div role="img" aria-label="Mapa de calor de vendas: o pico é sábado entre 10h e 12h; nos dias úteis, o fim da tarde vende mais." style="display: flex; flex-direction: column; gap: 4px">
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Seg</span><div style="height: 18px; border-radius: 3px; background: #30411C;"></div><div style="height: 18px; border-radius: 3px; background: #3D541F;"></div><div style="height: 18px; border-radius: 3px; background: #364A1E;"></div><div style="height: 18px; border-radius: 3px; background: #455F21;"></div><div style="height: 18px; border-radius: 3px; background: #3F5720;"></div><div style="height: 18px; border-radius: 3px; background: #384D1E;"></div><div style="height: 18px; border-radius: 3px; background: #405920;"></div><div style="height: 18px; border-radius: 3px; background: #476222;"></div><div style="height: 18px; border-radius: 3px; background: #455F21;"></div><div style="height: 18px; border-radius: 3px; background: #445D21;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Ter</span><div style="height: 18px; border-radius: 3px; background: #2C3C1B;"></div><div style="height: 18px; border-radius: 3px; background: #32451D;"></div><div style="height: 18px; border-radius: 3px; background: #445D21;"></div><div style="height: 18px; border-radius: 3px; background: #3C521F;"></div><div style="height: 18px; border-radius: 3px; background: #364A1E;"></div><div style="height: 18px; border-radius: 3px; background: #384D1E;"></div><div style="height: 18px; border-radius: 3px; background: #425A21;"></div><div style="height: 18px; border-radius: 3px; background: #4C6A23;"></div><div style="height: 18px; border-radius: 3px; background: #517024;"></div><div style="height: 18px; border-radius: 3px; background: #3C521F;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Qua</span><div style="height: 18px; border-radius: 3px; background: #374C1E;"></div><div style="height: 18px; border-radius: 3px; background: #32451D;"></div><div style="height: 18px; border-radius: 3px; background: #455F21;"></div><div style="height: 18px; border-radius: 3px; background: #466022;"></div><div style="height: 18px; border-radius: 3px; background: #3D541F;"></div><div style="height: 18px; border-radius: 3px; background: #3D541F;"></div><div style="height: 18px; border-radius: 3px; background: #4B6823;"></div><div style="height: 18px; border-radius: 3px; background: #4C6A23;"></div><div style="height: 18px; border-radius: 3px; background: #4B6823;"></div><div style="height: 18px; border-radius: 3px; background: #435C21;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Qui</span><div style="height: 18px; border-radius: 3px; background: #3A4F1F;"></div><div style="height: 18px; border-radius: 3px; background: #3E5520;"></div><div style="height: 18px; border-radius: 3px; background: #466022;"></div><div style="height: 18px; border-radius: 3px; background: #4E6D24;"></div><div style="height: 18px; border-radius: 3px; background: #3C521F;"></div><div style="height: 18px; border-radius: 3px; background: #445D21;"></div><div style="height: 18px; border-radius: 3px; background: #496522;"></div><div style="height: 18px; border-radius: 3px; background: #577826;"></div><div style="height: 18px; border-radius: 3px; background: #5C7F27;"></div><div style="height: 18px; border-radius: 3px; background: #3C521F;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Sex</span><div style="height: 18px; border-radius: 3px; background: #3B511F;"></div><div style="height: 18px; border-radius: 3px; background: #455F21;"></div><div style="height: 18px; border-radius: 3px; background: #466022;"></div><div style="height: 18px; border-radius: 3px; background: #496522;"></div><div style="height: 18px; border-radius: 3px; background: #557525;"></div><div style="height: 18px; border-radius: 3px; background: #4C6A23;"></div><div style="height: 18px; border-radius: 3px; background: #4C6A23;"></div><div style="height: 18px; border-radius: 3px; background: #5B7E27;"></div><div style="height: 18px; border-radius: 3px; background: #648B29;"></div><div style="height: 18px; border-radius: 3px; background: #4C6A23;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8E9892">Sáb</span><div style="height: 18px; border-radius: 3px; background: #74A22D;"></div><div style="height: 18px; border-radius: 3px; background: #8BC232;"></div><div style="height: 18px; border-radius: 3px; background: #A5E639;"></div><div style="height: 18px; border-radius: 3px; background: #B6FF3D;"></div><div style="height: 18px; border-radius: 3px; background: #709C2C;"></div><div style="height: 18px; border-radius: 3px; background: transparent; border: 1px dashed #1F2723; box-sizing: border-box;"></div><div style="height: 18px; border-radius: 3px; background: transparent; border: 1px dashed #1F2723; box-sizing: border-box;"></div><div style="height: 18px; border-radius: 3px; background: transparent; border: 1px dashed #1F2723; box-sizing: border-box;"></div><div style="height: 18px; border-radius: 3px; background: transparent; border: 1px dashed #1F2723; box-sizing: border-box;"></div><div style="height: 18px; border-radius: 3px; background: transparent; border: 1px dashed #1F2723; box-sizing: border-box;"></div></div>
-<div style="display: grid; grid-template-columns: 30px repeat(10, minmax(0, 1fr)); gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8E9892; text-align: center"><span></span><span>9h</span><span></span><span></span><span>12h</span><span></span><span></span><span>15h</span><span></span><span></span><span>18h</span></div>
-</div>
-</div>
-<div style="padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E9892">CASE 03 · LOJA DE BAIRRO</span>
-<h3 style="margin: 0; font-size: 21px">Loja de roupas</h3>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Antes:</strong> caderno de vendas e extrato da maquininha, sem visão de horário nem do peso das taxas.</p>
-<p style="margin: 0; color: #B4BDB7; line-height: 1.55; font-size: 15px"><strong style="color: #E9EFEA">Depois:</strong> mapa de vendas por horário, taxas de cartão por forma de pagamento e produtos que dão lucro de verdade.</p>
-<p style="margin: 0; padding-top: 12px; border-top: 1px solid #1F2723; color: #B4BDB7; line-height: 1.5; font-size: 14px">O sábado de manhã concentra o movimento e, nos dias úteis, o pico é <strong style="color: #B6FF3D">depois das 16h</strong>. A escala da equipe passou a seguir o mapa.</p>
-</div>
-</div>
+<div class="cs-txt">
+<div><b>ANTES</b><p id="cs-antes">Cada loja fechava o mês numa planilha própria, cheia de abas duplicadas e conferência manual. O consolidado chegava semanas depois.</p></div>
+<div><b>DEPOIS</b><p id="cs-depois">As três lojas num painel só: faturamento por loja, margem por categoria e o estoque que está parado.</p></div>
+<div class="res"><b>RESULTADO</b><p id="cs-res">O painel encontrou R$ 665 mil parados em produtos com mais de 120 dias de estoque.</p></div>
 </div>
 <a class="btn-ghost" href="https://wa.me/5535984694343?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20B12%20e%20quero%20entender%20como%20organizar%20os%20dados%20da%20minha%20empresa." target="_blank" style="align-self: flex-start; text-decoration: none; color: #E9EFEA; padding: 14px 22px; border-radius: 10px; border: 1px solid #2A332E; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Quero um painel assim para o meu negócio</a>
+<script>
+(function () {
+  var cases = [
+    { img: "varejo", altA: "Antes: planilha de vendas bagunçada, com erros e abas duplicadas",
+      altD: "Depois: painel de gestão da B12 com faturamento, margem e estoque parado",
+      antes: "Cada loja fechava o mês numa planilha própria, cheia de abas duplicadas e conferência manual. O consolidado chegava semanas depois.",
+      depois: "As três lojas num painel só: faturamento por loja, margem por categoria e o estoque que está parado.",
+      res: "O painel encontrou R$ 665 mil parados em produtos com mais de 120 dias de estoque." },
+    { img: "marcenaria", altA: "Antes: planilha de orçamentos com status anotados à mão",
+      altD: "Depois: painel com funil de vendas, fechamento por canal e pontualidade das equipes",
+      antes: "Orçamentos anotados numa planilha e no WhatsApp, sem saber de onde vinham os clientes que realmente fecham.",
+      depois: "Funil de vendas, taxa de fechamento por canal, margem por ambiente e pontualidade de cada equipe.",
+      res: "Orçamento vindo de arquiteto fecha 62% das vezes; do Google, 24%. Ficou claro onde investir tempo." },
+    { img: "loja", altA: "Antes: planilha de caixa com vendas e formas de pagamento misturadas",
+      altD: "Depois: painel com mapa de vendas por horário e taxas de cartão",
+      antes: "Caderno de caixa e extrato da maquininha. Ninguém sabia o melhor horário nem quanto as taxas comiam do lucro.",
+      depois: "Mapa de vendas por dia e horário, taxas de cartão por forma de pagamento e os produtos que dão lucro de verdade.",
+      res: "O crédito parcelado respondia por 63% das taxas pagas. A escala da equipe passou a seguir o mapa de horários." }
+  ];
+  var comp = document.getElementById("cs-comp"), range = document.getElementById("cs-range");
+  var ia = document.getElementById("cs-img-antes"), id = document.getElementById("cs-img-depois");
+  function mover() { comp.style.setProperty("--pos", range.value + "%"); }
+  range.addEventListener("input", mover);
+  cases.forEach(function (c) { new Image().src = "case-" + c.img + "-antes.jpg"; new Image().src = "case-" + c.img + "-depois.jpg"; });
+  document.querySelectorAll(".cs-aba").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var c = cases[+b.dataset.case];
+      document.querySelectorAll(".cs-aba").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+      ia.src = "case-" + c.img + "-antes.jpg"; ia.alt = c.altA;
+      id.src = "case-" + c.img + "-depois.jpg"; id.alt = c.altD;
+      document.getElementById("cs-antes").textContent = c.antes;
+      document.getElementById("cs-depois").textContent = c.depois;
+      document.getElementById("cs-res").textContent = c.res;
+      range.value = 50; mover();
+    });
+  });
+})();
+</script>
 </section>
+
 
 <section id="sobre" style="border-top: 1px solid #1A201D; background: #0A0D0C">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
