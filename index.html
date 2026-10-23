@@ -274,16 +274,83 @@ html{scroll-behavior:smooth}
 <a class="btn-main" href="https://wa.me/5535984694343?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20B12%20e%20quero%20entender%20como%20organizar%20os%20dados%20da%20minha%20empresa." target="_blank" style="text-decoration: none; background: #B6FF3D; color: #07090A; font-weight: 700; font-size: 17px; padding: 16px 28px; border-radius: 10px; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#07090A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"></path></svg>Chamar no WhatsApp</a>
 <a class="btn-ghost" href="mailto:b12solucoesdados@gmail.com" style="text-decoration: none; color: #E9EFEA; font-size: 17px; padding: 16px 28px; border-radius: 10px; border: 1px solid #2A332E; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center">Enviar e-mail</a>
 </div>
+<p style="margin: 0; color: #8E9892; font-size: 15px">Ou acompanhe dicas de dados no Instagram: <a href="https://www.instagram.com/b12.solucoes/" target="_blank" style="color: #B6FF3D">@b12.solucoes</a></p>
 </div>
 </section>
 
 <footer style="border-top: 1px solid #1A201D">
 <div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #8E9892">
 <span style="font-family: 'JetBrains Mono', monospace">B12 Soluções em Dados · CNPJ 59.913.787/0001-25</span>
-<span style="display: flex; flex-wrap: wrap; gap: 18px"><a href="https://wa.me/5535984694343?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20B12%20e%20quero%20entender%20como%20organizar%20os%20dados%20da%20minha%20empresa." target="_blank" style="color: #B4BDB7">WhatsApp</a><a href="mailto:b12solucoesdados@gmail.com" style="color: #B4BDB7">b12solucoesdados@gmail.com</a><a href="https://www.linkedin.com/company/b12solu%C3%A7%C3%B5es" target="_blank" style="color: #B4BDB7">LinkedIn</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 18px"><a href="https://wa.me/5535984694343?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20B12%20e%20quero%20entender%20como%20organizar%20os%20dados%20da%20minha%20empresa." target="_blank" style="color: #B4BDB7">WhatsApp</a><a href="mailto:b12solucoesdados@gmail.com" style="color: #B4BDB7">b12solucoesdados@gmail.com</a><a href="https://www.linkedin.com/company/b12solu%C3%A7%C3%B5es" target="_blank" style="color: #B4BDB7">LinkedIn</a><a href="https://www.instagram.com/b12.solucoes/" target="_blank" style="color: #B4BDB7">Instagram</a></span>
 </div>
 </footer>
 
 </div>
+
+<style id="b12-animacoes">
+@keyframes b12-sobe{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes b12-barra{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes b12-pulso{0%{box-shadow:0 0 0 0 rgba(182,255,61,.6)}70%{box-shadow:0 0 0 8px rgba(182,255,61,0)}100%{box-shadow:0 0 0 0 rgba(182,255,61,0)}}
+@media (prefers-reduced-motion: no-preference){
+  #topo > div:first-child > *{animation:b12-sobe .7s cubic-bezier(.2,.7,.2,1) both}
+  #topo > div:first-child > *:nth-child(2){animation-delay:.1s}
+  #topo > div:first-child > *:nth-child(3){animation-delay:.2s}
+  #topo > div:first-child > *:nth-child(4){animation-delay:.3s}
+  #topo > div:nth-child(2){animation:b12-sobe .8s .35s cubic-bezier(.2,.7,.2,1) both}
+  #topo div[style*="flex: 1; height"]{transform-origin:bottom;animation:b12-barra .7s cubic-bezier(.2,.7,.2,1) both}
+  #topo div[style*="flex: 1; height"]:nth-child(1){animation-delay:.55s}
+  #topo div[style*="flex: 1; height"]:nth-child(2){animation-delay:.6s}
+  #topo div[style*="flex: 1; height"]:nth-child(3){animation-delay:.65s}
+  #topo div[style*="flex: 1; height"]:nth-child(4){animation-delay:.7s}
+  #topo div[style*="flex: 1; height"]:nth-child(5){animation-delay:.75s}
+  #topo div[style*="flex: 1; height"]:nth-child(6){animation-delay:.8s}
+  #topo div[style*="flex: 1; height"]:nth-child(7){animation-delay:.85s}
+  #topo div[style*="flex: 1; height"]:nth-child(8){animation-delay:.95s}
+  #topo span[style*="border-radius: 50%"]{animation:b12-pulso 2s 1.2s infinite}
+  .b12-js .b12-revela{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .b12-js .b12-revela.visivel{opacity:1;transform:none}
+}
+</style>
+<script id="b12-animacoes-js">
+(function () {
+  var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduzir || !("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("b12-js");
+
+  // Seções aparecem suavemente ao rolar (o hero já tem a própria animação)
+  var secoes = document.querySelectorAll("section:not(#topo)");
+  var obs = new IntersectionObserver(function (itens) {
+    itens.forEach(function (it) {
+      if (it.isIntersecting) { it.target.classList.add("visivel"); obs.unobserve(it.target); }
+    });
+  }, { threshold: 0.12 });
+  secoes.forEach(function (s) { s.classList.add("b12-revela"); obs.observe(s); });
+
+  // Dica no slider de antes/depois: a barra desliza uma vez quando aparece na tela
+  var comp = document.getElementById("cs-comp"), range = document.getElementById("cs-range");
+  if (!comp || !range) return;
+  var mexeu = false;
+  range.addEventListener("pointerdown", function () { mexeu = true; });
+  range.addEventListener("keydown", function () { mexeu = true; });
+  var dica = new IntersectionObserver(function (itens) {
+    if (!itens[0].isIntersecting) return;
+    dica.disconnect();
+    var passos = [[50, 32, 500], [32, 68, 800], [68, 50, 500]], i = 0;
+    function anima() {
+      if (mexeu || i >= passos.length) return;
+      var p = passos[i], ini = performance.now();
+      (function quadro(t) {
+        if (mexeu) return;
+        var k = Math.min(1, (t - ini) / p[2]), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        range.value = p[0] + (p[1] - p[0]) * e;
+        comp.style.setProperty("--pos", range.value + "%");
+        if (k < 1) requestAnimationFrame(quadro); else { i++; anima(); }
+      })(ini);
+    }
+    setTimeout(anima, 600);
+  }, { threshold: 0.6 });
+  dica.observe(comp);
+})();
+</script>
 </body>
 </html>
