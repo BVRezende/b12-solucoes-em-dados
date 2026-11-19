@@ -33,9 +33,9 @@ h1{margin:6px 0 8px;font-size:clamp(28px,4.5vw,40px);letter-spacing:-1px;line-he
 .preset:focus-visible,select:focus-visible,.btn:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 select{font:inherit;font-size:14px;background:var(--bg);color:var(--fg);border:1px solid #2A332E;border-radius:10px;min-height:40px;padding:0 12px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:14px}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
 .kpi.dest{border-color:var(--lime);box-shadow:0 0 50px rgba(182,255,61,.07)}
-.kpi .r{font-size:13px;color:var(--dim)} .kpi .v{font-size:26px;margin-top:6px;white-space:nowrap}
+.kpi .r{font-size:13px;color:var(--dim)} .kpi .v{font-size:26px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kpi.dest .v{color:var(--lime)} .kpi .d{font-size:12px;margin-top:6px;color:var(--dim)}
 .bom{color:var(--lime)} .ruim{color:var(--bad)}
 .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px;margin-bottom:12px}
@@ -50,6 +50,17 @@ td{padding:8px;border-bottom:1px solid #151B18;color:var(--muted)} td.n,th.n{tex
 .cta{margin-top:28px;border:1px solid var(--lime);border-radius:16px;padding:28px;background:var(--panel);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
 .cta h2{margin:0 0 6px;font-size:24px;letter-spacing:-.5px} .cta p{margin:0;color:var(--muted)}
 .rodape{margin-top:24px;font-size:13px;color:var(--dim)}
+@media (max-width:560px){
+ .topo-in{flex-wrap:nowrap;padding-top:12px;padding-bottom:12px}
+ .topo-in .btn{min-height:40px;padding:0 14px;font-size:14px;white-space:nowrap}
+ .marca small{display:none}
+ .conteudo{padding-left:16px;padding-right:16px}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .kpi{padding:14px}
+ .kpi .v{font-size:21px}
+ .kpi .d{font-size:11px}
+ .bloco{padding:14px}
+}
 </style>
 </head>
 <body>
@@ -100,6 +111,10 @@ const CORES = {'Rodovia':'#B6FF3D','Centro':'#4FD1C5','Bairro Norte':'#F2A541'};
 const estado = {meses: '6', loja: ''};
 const brl = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
 const brl2 = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+// No celular, os cards usam valores abreviados (R$ 1,38 mi) para caber sem cortar
+const brlCard = v => window.innerWidth < 560 && v >= 100000
+  ? 'R$ ' + (v >= 1e6 ? (v / 1e6).toLocaleString('pt-BR', {maximumFractionDigits: 2}) + ' mi' : (v / 1e3).toLocaleString('pt-BR', {maximumFractionDigits: 0}) + ' mil')
+  : brl(v);
 const num = v => Math.round(v).toLocaleString('pt-BR');
 const dec = v => v.toLocaleString('pt-BR', {minimumFractionDigits:1, maximumFractionDigits:1});
 const sinal = v => (v > 0 ? '+' : '') + dec(v);
@@ -135,7 +150,7 @@ function desenhar() {
   }
   const a = resumo(atual), b = resumo(anterior);
   const vr = b.receita ? (a.receita / b.receita - 1) * 100 : 0;
-  document.getElementById('k-receita').textContent = brl(a.receita);
+  document.getElementById('k-receita').textContent = brlCard(a.receita);
   document.getElementById('k-margem').textContent = dec(a.margem) + '%';
   document.getElementById('k-pedidos').textContent = num(a.pedidos);
   document.getElementById('k-ticket').textContent = brl2(a.ticket);
@@ -217,7 +232,7 @@ function tabelas(v) {
   d3.rollups(v, g => [d3.sum(g, r => r.quantidade), d3.sum(g, r => r.receita)], r => r.produto).sort((a, b) => b[1][1] - a[1][1]).slice(0, 10)
     .forEach(([p, [q, r]]) => linha(tp, [[p], [num(q), 1], [brl(r), 1]]));
   const par = E.filter(r => r.dias > 120 && (!estado.loja || r.loja === estado.loja)).sort((a, b) => b.valor - a.valor);
-  document.getElementById('p-total').textContent = brl(d3.sum(par, r => r.valor));
+  document.getElementById('p-total').textContent = brlCard(d3.sum(par, r => r.valor));
   document.getElementById('p-itens').textContent = num(par.length);
   const te = document.getElementById('t-est'); te.replaceChildren();
   par.slice(0, 8).forEach(r => linha(te, [[r.loja], [r.produto], [num(r.dias), 1], [brl(r.valor), 1]]));
